@@ -38,7 +38,7 @@ module LinkedIn
       end
 
       def person_path(options)
-        path = "/people"
+        path = "/me"
         if id = options.delete(:id)
           path += "/id=#{id}"
         elsif url = options.delete(:url)
