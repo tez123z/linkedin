@@ -7,12 +7,14 @@ module LinkedIn
         'x-li-format' => 'json'
       }
 
-      API_PATH = '/v1'
+      API_PATH = '/v2'
 
       protected
 
         def get(path, options={})
+          puts "request path #{API_PATH}#{path}"
           response = access_token.get("#{API_PATH}#{path}", {:headers => DEFAULT_HEADERS.merge(options)})
+          puts "api response #{response}"
           raise_errors(response)
           response.body
         end
