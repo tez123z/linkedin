@@ -18,8 +18,12 @@ module LinkedIn
       # @option options [string] :secure-urls if 'true' URLs in responses will be HTTPS
       # @return [LinkedIn::Mash]
       def profile(options={})
-        path = person_path(options)
+        path = "/me/?projection=(id,firstName,lastName,profilePicture(displayImage~:playableStreams))"
         simple_query(path, options)
+      end
+
+      def email
+        simple_query("/emailAddress?q=members&projection=(elements*(handle~))")
       end
 
       # Retrieve a list of 1st degree connections for a user who has
